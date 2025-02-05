@@ -1,0 +1,235 @@
+driver.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driver Performance - Fleet Management System</title>
+    <style>
+      /* Reset Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        background-color: #1e90ff; /* Blue */
+        color: white;
+        height: 100vh;
+        position: fixed;
+        padding: 20px;
+      }
+
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .sidebar nav ul {
+        list-style: none;
+      }
+
+      .sidebar nav ul li {
+        margin: 15px 0;
+      }
+
+      .sidebar nav ul li a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 10px;
+        transition: background 0.3s;
+      }
+
+      .sidebar nav ul li a:hover,
+      .sidebar nav ul li a.active {
+        background-color: #4682b4;
+        border-radius: 5px;
+      }
+
+      /* Main Content */
+      .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+      }
+
+      header h1 {
+        font-size: 28px;
+        color: #1e90ff; /* Blue */
+        margin-bottom: 20px;
+      }
+
+      .input-section,
+      .table-section {
+        margin-bottom: 20px;
+        padding: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #007bff; /* Blue */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #aaa;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #1e90ff; /* Blue */
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    </style>
+    <script>
+      // Function to add driver performance details
+      function addDriverPerformance() {
+        const driverName = document.getElementById("driver-name").value;
+        const driverScore = document.getElementById("driver-score").value;
+        const driverRemarks = document.getElementById("driver-remarks").value;
+
+        if (driverName && driverScore) {
+          const table = document.getElementById("performance-table");
+          const newRow = table.insertRow(-1);
+
+          newRow.insertCell(0).innerText = driverName;
+          newRow.insertCell(1).innerText = driverScore;
+          newRow.insertCell(2).innerText = driverRemarks;
+
+          // Clear input fields
+          document.getElementById("driver-name").value = "";
+          document.getElementById("driver-score").value = "";
+          document.getElementById("driver-remarks").value = "";
+        } else {
+          alert("Please fill in all required fields (Driver Name and Score).");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Fleet Management</h2>
+      <nav>
+        <ul>
+          <li><a href="dashboard.html">Home</a></li>
+          <li><a href="gps_tracking.html">GPS Tracking</a></li>
+          <li><a href="drivers.html" class="active">Driver Performance</a></li>
+          <li><a href="route_optimization.html">Route Optimization</a></li>
+          <li><a href="maintenance.html">Maintenance</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1>DRIVER PERFORMANCE</h1>
+      </header>
+
+      <!-- Driver Performance Input -->
+      <section class="input-section">
+        <h2>Log Driver Performance</h2>
+        <form onsubmit="event.preventDefault(); addDriverPerformance();">
+          <label for="driver-name">Driver Name:</label>
+          <input
+            type="text"
+            id="driver-name"
+            placeholder="Enter driver name"
+            required
+          />
+
+          <label for="driver-score">Performance Score:</label>
+          <input
+            type="number"
+            id="driver-score"
+            placeholder="Score (0-10)"
+            min="0"
+            max="10"
+            required
+          />
+
+          <label for="driver-remarks">Remarks:</label>
+          <input
+            type="text"
+            id="driver-remarks"
+            placeholder="Optional remarks"
+          />
+
+          <button type="submit">Add Performance</button>
+        </form>
+      </section>
+
+      <!-- Driver Performance Table -->
+      <section class="table-section">
+        <h2>Performance Records</h2>
+        <table id="performance-table">
+          <thead>
+            <tr>
+              <th>Driver Name</th>
+              <th>Performance Score</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be added dynamically -->
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>

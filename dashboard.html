@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fleet Management Dashboard</title>
+    <style>
+      /* General reset */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #4a3ef0;
+        display: flex;
+        flex-direction: row; /* Changed to row for side-by-side layout */
+        height: 100vh;
+      }
+
+      /* Sidebar styling */
+      #sidebar {
+        width: 250px;
+        background-color: #0044cc;
+        color: white;
+        padding: 20px;
+        height: 100%;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      #sidebar h2 {
+        margin: 0 0 20px;
+        font-size: 1.5em;
+        text-align: center;
+      }
+
+      #sidebar nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      #sidebar nav ul li {
+        margin: 15px 0;
+      }
+
+      #sidebar nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1em;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      #sidebar nav ul li a:hover,
+      #sidebar nav ul li a.active {
+        background-color: #002a80;
+      }
+
+      /* Main content styling */
+      #main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f4f4f9;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #main-content header h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #0044cc;
+      }
+
+      /* Dashboard overview cards */
+      .dashboard-cards {
+        display: flex; /* Flexbox for horizontal layout */
+        gap: 20px;
+        flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+        justify-content: space-between;
+      }
+
+      .card {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        flex: 1 1 22%; /* Makes the cards responsive and evenly spaced */
+        min-width: 200px;
+      }
+
+      .card h3 {
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        color: #333;
+      }
+
+      .card p {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        color: #0044cc;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #0044cc;
+        color: white;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar">
+      <h2>Fleet Management</h2>
+      <nav>
+        <ul>
+          <li><a href="dashboard.html" class="active">Home</a></li>
+          <li><a href="gps_tracking.html">GPS Tracking</a></li>
+          <li><a href="driver.html">Driver Performance</a></li>
+          <li><a href="route_optimization.html">Route Optimization</a></li>
+          <li><a href="maintenance.html">Maintenance</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Dashboard Content -->
+    <main id="main-content">
+      <header>
+        <h1>Fleet Management Dashboard</h1>
+      </header>
+
+      <!-- Dashboard Overview -->
+      <section id="overview">
+        <div class="dashboard-cards">
+          <div class="card">
+            <h3>Total Vehicles</h3>
+            <p>45</p>
+          </div>
+          <div class="card">
+            <h3>Active Drivers</h3>
+            <p>38</p>
+          </div>
+          <div class="card">
+            <h3>Maintenance Tasks</h3>
+            <p>7 Scheduled</p>
+          </div>
+          <div class="card">
+            <h3>Optimal Routes</h3>
+            <p>15 Planned</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Fleet Management Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/dashboard.js"></script>
+  </body>
+</html>

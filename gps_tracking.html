@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPS Live Tracking</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff; /* Light blue background */
+    }
+    header {
+      background-color: #1e90ff; /* Dodger blue */
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    #map {
+      width: 100%;
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #4682b4; /* Steel blue */
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GPS Live Location Tracking</h1>
+  </header>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <footer>&copy; 2024 Fleet Management System. All rights reserved.</footer>
+
+  <!-- Include Mapbox JS -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+  <script>
+    // Mapbox API token
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWdhdGhvZ28iLCJhIjoiY200d3FoN3hqMGF4ODJsc2QxMXQ5ZWlvdiJ9.7K4Z8nWSY6lvzgAmXZpXSw';
+
+    // Initialize the map
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [36.8219, -1.2921], // Default center
+      zoom: 15,
+    });
+
+    // Add navigation controls
+    const nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-right');
+
+    // Marker for live location
+    const marker = new mapboxgl.Marker({ color: 'red' });
+
+    // Function to update map with the current position
+    function updatePosition(position) {
+      const { latitude, longitude } = position.coords;
+      
+      // Set the marker position
+      marker.setLngLat([longitude, latitude]).addTo(map);
+
+      // Center the map on the user's location
+      map.flyTo({
+        center: [longitude, latitude],
+        essential: true, // Ensures smooth transition
+      });
+    }
+
+    // Handle geolocation errors
+    function handleError(error) {
+      console.error('Error fetching geolocation:', error.message);
+      alert('Unable to fetch your location. Please enable location services.');
+    }
+
+    // Use the Geolocation API to track position
+    if (navigator.geolocation) {
+      // Watch position for live updates
+      navigator.geolocation.watchPosition(updatePosition, handleError, {
+        enableHighAccuracy: true, // Use GPS if available
+      });
+    } else {
+      alert('Geolocation is not supported by your browser.');
+    }
+  </script>
+</body>
+</html>
