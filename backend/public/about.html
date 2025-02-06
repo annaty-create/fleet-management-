@@ -1,0 +1,160 @@
+about.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Fleet Management System</title>
+  <style>
+    /* Reset Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #4b95e0; /* Dark Blue */
+      color: white;
+      height: 100vh;
+      position: fixed;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffcc00; /* Light Yellow */
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+    }
+
+    .sidebar nav ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar nav ul li a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      padding: 10px;
+      transition: background 0.3s;
+    }
+
+    .sidebar nav ul li a:hover,
+    .sidebar nav ul li a.active {
+      background-color: #005cbf; /* Blue Hover */
+      border-radius: 5px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      min-height: 100vh;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #003366; /* Dark Blue */
+      margin-bottom: 20px;
+    }
+
+    /* About Us Details */
+    .about-details {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-details h2 {
+      color: #003366; /* Dark Blue */
+    }
+
+    .about-details p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    /* About Team */
+    .about-team {
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-team h3 {
+      color: #003366; /* Dark Blue */
+      margin-bottom: 10px;
+    }
+
+    .about-team ul {
+      list-style: none;
+    }
+
+    .about-team ul li {
+      margin: 10px 0;
+    }
+
+    .about-team ul li strong {
+      color: #003366; /* Dark Blue */
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Fleet Management</h2>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Home</a></li>
+        <li><a href="gps_tracking.html">GPS Tracking</a></li>
+        <li><a href="drivers.html">Driver Performance</a></li>
+        <li><a href="route_optimization.html">Route Optimization</a></li>
+        <li><a href="maintenance.html">Maintenance</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <h1>ABOUT US</h1>
+    </header>
+
+    <!-- About Details -->
+    <section class="about-details">
+      <h2>Our Company</h2>
+      <p>
+        Fleet Management Inc. is a leading provider of fleet management solutions, specializing in innovative technologies and services for fleet optimization, route planning, vehicle tracking, and driver performance analysis.
+      </p>
+      <p>
+        With a focus on delivering efficient, cost-effective, and sustainable solutions, we aim to help businesses streamline their operations, reduce costs, and increase productivity. Our technology-driven approach ensures that our clients can monitor, control, and optimize their fleets in real-time.
+      </p>
+    </section>
+
+    <!-- About Team -->
+    <section class="about-team">
+      <h3>Our Team</h3>
+      <ul>
+        <li><strong>John Doe</strong> - CEO: Leads the company with over 20 years of experience in fleet management and technology solutions.</li>
+        <li><strong>Jane Smith</strong> - CTO: Oversees the development of cutting-edge technologies for fleet optimization.</li>
+        <li><strong>Mike Johnson</strong> - Operations Manager: Manages daily operations and ensures seamless service delivery for clients.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

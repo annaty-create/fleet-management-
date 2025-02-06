@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maintenance - Fleet Management System</title>
+    <style>
+      /* Reset Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        background-color: rgb(117, 184, 252); /* Dark Blue */
+        color: white;
+        height: 100vh;
+        position: fixed;
+        padding: 20px;
+      }
+
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .sidebar nav ul {
+        list-style: none;
+      }
+
+      .sidebar nav ul li {
+        margin: 15px 0;
+      }
+
+      .sidebar nav ul li a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 10px;
+        transition: background 0.3s;
+      }
+
+      .sidebar nav ul li a:hover,
+      .sidebar nav ul li a.active {
+        background-color: rgb(26, 82, 138); /* Medium Blue */
+        border-radius: 5px;
+      }
+
+      /* Main Content */
+      .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        background-color: #eef7ff; /* Light Blue */
+        min-height: 100vh;
+      }
+
+      header h1 {
+        font-size: 28px;
+        color: rgb(36, 103, 171); /* Dark Blue */
+        margin-bottom: 20px;
+      }
+
+      /* Table Styles */
+      .maintenance-table table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      .maintenance-table th,
+      .maintenance-table td {
+        border: 1px solid rgb(180, 177, 177);
+        padding: 10px;
+        text-align: center;
+      }
+
+      .maintenance-table th {
+        background-color: rgb(26, 82, 138); /* Medium Blue */
+        color: white;
+      }
+
+      .maintenance-table tbody tr:nth-child(even) {
+        background-color: #eef7ff; /* Light Blue */
+      }
+
+      /* Form Styles */
+      .log-maintenance {
+        background-color: rgb(235, 245, 255); /* Very Light Blue */
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .log-maintenance label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+
+      .log-maintenance input,
+      .log-maintenance select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .log-maintenance button {
+        background-color: rgb(36, 103, 171); /* Dark Blue */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .log-maintenance button:hover {
+        background-color: rgb(26, 82, 138); /* Medium Blue */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Fleet Management</h2>
+      <nav>
+        <ul>
+          <li><a href="dashboard.html">Home</a></li>
+          <li><a href="gps_tracking.html">GPS Tracking</a></li>
+          <li><a href="driver.html">Driver Performance</a></li>
+          <li><a href="route_optimization.html">Route Optimization</a></li>
+          <li><a href="maintenance.html" class="active">Maintenance</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1>MAINTENANCE TASK</h1>
+      </header>
+
+      <!-- Maintenance Table -->
+      <section class="maintenance-table">
+        <h2>Scheduled Maintenance</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Vehicle ID</th>
+              <th>Task Description</th>
+              <th>Scheduled Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="maintenance-log">
+            <tr>
+              <td>VEH001</td>
+              <td>Oil Change</td>
+              <td>2024-07-20</td>
+              <td>Pending</td>
+            </tr>
+            <tr>
+              <td>VEH002</td>
+              <td>Tyre Replacement</td>
+              <td>2024-07-25</td>
+              <td>In Progress</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Log New Maintenance Task -->
+      <section class="log-maintenance">
+        <h2>Log New Maintenance Task</h2>
+        <form id="maintenance-form">
+          <label for="vehicle-id">Vehicle ID:</label>
+          <input
+            type="text"
+            id="vehicle-id"
+            placeholder="Enter Vehicle ID"
+            required
+          />
+
+          <label for="task-desc">Task Description:</label>
+          <input
+            type="text"
+            id="task-desc"
+            placeholder="Enter Task Description"
+            required
+          />
+
+          <label for="schedule-date">Scheduled Date:</label>
+          <input type="date" id="schedule-date" required />
+
+          <label for="status">Status:</label>
+          <select id="status">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+
+          <button type="button" onclick="addMaintenance()">Add Task</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      function addMaintenance() {
+        const vehicleId = document.getElementById("vehicle-id").value;
+        const taskDesc = document.getElementById("task-desc").value;
+        const scheduleDate = document.getElementById("schedule-date").value;
+        const status = document.getElementById("status").value;
+
+        if (vehicleId && taskDesc && scheduleDate && status) {
+          const table = document.getElementById("maintenance-log");
+          const row = table.insertRow();
+
+          row.insertCell(0).innerText = vehicleId;
+          row.insertCell(1).innerText = taskDesc;
+          row.insertCell(2).innerText = scheduleDate;
+          row.insertCell(3).innerText = status;
+
+          // Clear form fields
+          document.getElementById("maintenance-form").reset();
+        } else {
+          alert("Please fill in all fields.");
+        }
+      }
+    </script>
+  </body>
+</html>
